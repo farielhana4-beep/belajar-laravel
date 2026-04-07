@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use illuminate\Support\Facades\Redirect;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

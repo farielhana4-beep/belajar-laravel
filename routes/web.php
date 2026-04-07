@@ -4,7 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-Route::resource('produk', ProdukController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('produk', ProdukController::class);
+
+    Route::get('/dashboard', function () {
+        return redirect('/produk');
+    })->name('dashboard');
+});
+
+require __DIR__.'/auth.php';
