@@ -15,6 +15,13 @@
         @yield('content')
     </div>
 </main>
+@if(session('success'))
+    <div class="max-w-6xl mx-auto mt-4">
+        <div class="bg-green-100 text-green-700 px-4 py-3 rounded-lg">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
 
 </body>
 </html>

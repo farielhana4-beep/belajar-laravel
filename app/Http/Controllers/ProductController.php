@@ -8,10 +8,26 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->get();
-        return view('products.index', compact('products'));
+        $query = Product::with('category');
+
+        if ($request->search) {
+            $query->where('nama', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->category) {
+            $query->whereIn('category_id', $request->category);
+        }
+
+        $products = $query->get();
+
+        $categories = Category::select('id','name')
+            ->distinct()
+            ->orderBy('name')
+            ->get();
+
+        return view('products.index', compact('products', 'categories'));
     }
 
     public function create()
@@ -25,7 +41,7 @@ class ProductController extends Controller
         Product::create([
             'nama' => $request->nama,
             'harga' => $request->harga,
-            'stok' => $request->stok,
+            'stok' => $request->stok ?? 0,
             'category_id' => $request->category_id
         ]);
 
@@ -37,7 +53,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $categories = Category::all();
 
-        return view('products.edit', compact('product','categories'));
+        return view('products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -47,7 +63,7 @@ class ProductController extends Controller
         $product->update([
             'nama' => $request->nama,
             'harga' => $request->harga,
-            'stok' => $request->stok,
+            'stok' => $request->stok ?? 0,
             'category_id' => $request->category_id
         ]);
 

@@ -1,11 +1,3 @@
-<div class="flex gap-2 pt-2">
-    <button type="submit"
-        class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg shadow">
-        Simpan
-    </button>
-
-    <a href="{{ route('products.index') }}"
-        class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg shadow">
-        Kembali
-    </a>
-</div>
+<svg viewBox="0 0 316 316" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
+    <path d="M305.8 81.6c0 0-4.8-21.4-19.6-30.8-18.8-12.4-39.8-12.4-49.4-13.6C167.8 33.6 158 33.6 158 33.6h-.2s-9.8 0-78.8 3.6c-9.6 1.2-30.6 1.2-49.4 13.6C14.8 60.2 10 81.6 10 81.6S5.2 106.6 5.2 131.6v23.4c0 25 4.8 50 4.8 50s4.8 21.4 19.6 30.8c18.8 12.4 43.4 12 54.4 13.8 39.4 3.8 73.8 3.6 73.8 3.6s9.8 0 78.8-3.6c9.6-1.2 30.6-1.2 49.4-13.6 14.8-9.4 19.6-30.8 19.6-30.8s4.8-25 4.8-50v-23.4c0-25-4.8-50-4.8-50z"/>
+</svg>
